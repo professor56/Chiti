@@ -6,6 +6,21 @@ public class Robot {
 	String name;
 	Scanner k= new Scanner (System.in);
 	Random r=new Random();
+	String[] days= {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};;
+	String[] months= {
+			"January",
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"october",
+			"November",
+			"December"
+	};
 	//constructor Robot
 	public Robot(String n) {
 		this.name=n;
@@ -207,6 +222,37 @@ public class Robot {
 			return;
 		}
 	}
+	public void Day(int d) {
+		if(d<=this.days.length) {
+		for(int i=0;i<d;i++) {
+			System.out.print(this.days[i]+" ");
+			
+		}
+		if(d>this.days.length) {
+			System.out.println("Chiti : I can't find day");
+			return;
+		}
+		}
+	}
+	public void Month(int m) { 
+		if(m<=this.months.length) {
+			for(int j=0;j<m;j++) {
+				System.out.println(this.months[j]);
+			}
+			if(m>this.months.length) {
+				System.out.println("Chiti: I can't find month");
+				return;
+			}
+			
+		}
+	}
+	public int D() {
+		return this.days.length;
+	}
+	public int M() {
+		return this.months.length;
+	}
+	
 
 
 	public static void main(String[] args) {
@@ -221,7 +267,7 @@ public class Robot {
 		chiti.On(pin, n);
 		 
 		while(b) {
-			System.out.println("Listening......");
+			System.out.println("Processing......");
 			String ip=in.nextLine();
 			if(ip.equals("off") || ip.equals("Off")) {
 				b=false;
@@ -279,6 +325,22 @@ public class Robot {
 			 }
 			 if(ip.equals("chiti play guess number")) {
 				 chiti.Guessnumber();
+			 }
+			 if(ip.equals("chiti tell day")) {
+				 System.out.println("How many days");
+				 int d=in.nextInt();
+				 chiti.Day(d);
+			 }
+			 if(ip.equals("chiti tell months")) {
+				 System.out.println("How mamy months");
+				 int m=in.nextInt();
+				 chiti.Month(m);
+			 }
+			 if(ip.equals("chiti tell how many days")) {
+				 System.out.println(chiti.D()+" Days");
+			 }
+			 if(ip.equals("chiti tell how many months")) {
+				 System.out.println(chiti.M()+" Months");
 			 }
 			 
 		}
